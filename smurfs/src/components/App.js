@@ -1,16 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
-class App extends Component {
-  render() {
+import SmurfsList from './SmurfsList'
+import SmurfsForm from './SmurfsForm'
+import { BrowserRouter as Router, Route, Link,} from "react-router-dom";
+import { CardImg } from 'reactstrap'
+
+function App () {
+  
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+      <Router>
+        
+      <div className="App" >
+        <h1>SMURFS!</h1>
+        <CardImg style = {{width:'90%', margin:'0 auto', height:'500px'}} src={require ('../img/images.jpeg')}/>
         <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <br></br>
+        <Link to= '/Profile'>
+            <button style={{margin:'10px'}}>Smurf Profiles</button>
+        </Link>
+        <Link to= '/SmurfsForm'>
+            <button style={{margin:'10px'}}>Add a Smurf</button>
+        </Link>
+        <Link to= '/'>
+            <button style={{margin:'10px'}}>Home</button>
+        </Link>
+        <Route exact path = '/Profile'>
+        <SmurfsList/>
+        </Route>
+        <br></br>
+        <br></br>
+        <Route exact path ='/SmurfsForm'>
+        <SmurfsForm/>
+        </Route>
       </div>
+      </Router>
     );
   }
-}
 
 export default App;
+
+
